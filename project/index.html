@@ -1,0 +1,1257 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Fitness | Transforma tu vida</title>
+
+    <link rel="icon" type="image/png" href="https://r2-test.numart.com.co/apex.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/thin/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/duotone/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #fdfd05;
+            --primary-light: #ffffa3;
+            --primary-dark: #ebeb0b;
+            --lime-green: #fdfd05;
+            --bg-body: #FFFFFF;
+            --bg-card: #F9FAFB;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --border-color: #E5E7EB;
+            --success-color: #10B981;
+            --shadow-soft: 0 10px 25px rgba(0,0,0,0.04);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: #000;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition-smooth);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(253,253,5,0.3);
+        }
+
+        /* ===========================
+           NAVBAR
+        =========================== */
+        header {
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary-dark); }
+
+        /* Hamburger – solo visible en móvil */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        /* Menú móvil desplegable */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 2px solid var(--primary);
+            z-index: 999;
+            padding: 10px 0 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            padding: 14px 28px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover { background: var(--primary-light); }
+
+        /* ===========================
+           HERO SLIDER
+        =========================== */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 90vh;          /* más pequeño por defecto */
+            margin-top: 72px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .slide.active { opacity: 1; z-index: 10; }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 20px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: 14px; }
+        .next-btn { right: 14px; }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ===========================
+           SERVICIOS
+        =========================== */
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-image-layout { background-color: var(--bg-body); }
+
+        .services-header-img {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-header-img h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .services-header-img h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .services-icons-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .service-item-img {
+            text-align: center;
+            width: 130px;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .service-item-img:hover { transform: translateY(-8px); }
+
+        .service-item-img i {
+            font-size: 60px;
+            color: #eeee0a;
+            margin-bottom: 12px;
+            display: inline-block;
+            filter: drop-shadow(0 4px 6px rgba(170,255,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .service-item-img:hover i { transform: scale(1.1); }
+
+        .service-item-img p {
+            font-size: 0.82rem;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        /* Banner clases */
+        .banner-clases-img {
+            background-color: var(--lime-green);
+            border-radius: 40px;
+            padding: 22px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            box-shadow: 0 10px 25px rgba(170,255,0,0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .banner-clases-img:hover { transform: translateY(-3px); }
+
+        .banner-clases-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .banner-clases-left i { font-size: 40px; color: #222; }
+
+        .banner-clases-left h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #222;
+            margin: 0;
+        }
+
+        .banner-clases-divider {
+            width: 3px; height: 40px;
+            background-color: #222;
+            border-radius: 2px;
+        }
+
+        .banner-clases-center {
+            flex: 1;
+            color: #222;
+            font-weight: 500;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .banner-clases-right .btn-dark {
+            background-color: #333;
+            color: var(--lime-green);
+            padding: 11px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-block;
+        }
+
+        .banner-clases-right .btn-dark:hover {
+            background-color: #111;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* ===========================
+           PLANES
+        =========================== */
+        .plans-area { background-color: var(--bg-body); }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .plan-card {
+            position: relative;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        .plan-card.standard {
+            background: var(--bg-card);
+            color: var(--text-main);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-color: var(--border-color);
+        }
+
+        .plan-card.standard:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .plan-card.highlighted {
+            background: #393939;
+            color: #FFFFFF;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 4px solid var(--primary);
+        }
+
+        .plan-card.highlighted:hover { transform: scale(1.02); }
+
+        .badge {
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .badge.standard { background: #E5E7EB; color: #1F2937; }
+        .badge.highlighted { background: var(--primary); color: #000; }
+
+        .pricing-section { margin-bottom: 2rem; flex-grow: 1; }
+
+        .pricing-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .plan-card.standard .pricing-label { color: var(--text-muted); }
+        .plan-card.highlighted .pricing-label { color: #A0A0A0; }
+
+        .original-price { font-size: 1.1rem; text-decoration: line-through; }
+        .plan-card.standard .original-price { color: #9CA3AF; }
+        .plan-card.highlighted .original-price { color: #6B7280; }
+
+        .current-price {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .price-amount { font-size: 2.2rem; font-weight: 800; }
+        .plan-card.highlighted .price-amount { color: var(--primary); }
+
+        .discount-badge { border-radius: 9999px; font-weight: bold; }
+
+        .plan-card.standard .discount-badge {
+            background: #DCFCE7;
+            color: #166534;
+            padding: 2px 10px;
+            font-size: 0.78rem;
+        }
+
+        .plan-card.highlighted .discount-badge {
+            background: var(--primary);
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .price-details { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.6rem; }
+        .plan-card.standard .price-details { color: var(--text-muted); }
+        .plan-card.highlighted .price-details { color: #D1D5DB; }
+
+        .commitment { font-size: 0.85rem; font-weight: 500; }
+        .plan-card.standard .commitment { color: #374151; }
+        .plan-card.highlighted .commitment { color: #D1D5DB; }
+
+        .cta-button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.standard { background: var(--primary); color: #000; }
+        .cta-button.standard:hover { background-color: var(--primary-dark); transform: scale(1.03); }
+        .cta-button.highlighted { background: var(--primary); color: #000; }
+        .cta-button.highlighted:hover { background-color: var(--primary-dark); transform: scale(1.03); }
+
+        .divider { height: 1px; margin-bottom: 2rem; }
+        .plan-card.standard .divider { background: var(--border-color); }
+        .plan-card.highlighted .divider { background: #4B5563; }
+
+        .features-list { display: flex; flex-direction: column; gap: 1rem; font-size: 0.93rem; }
+
+        .feature-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 1.4rem; height: 1.4rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.15rem;
+        }
+
+        .feature-icon.included { background: var(--success-color); }
+        .feature-icon.not-included.standard { background: #E5E7EB; }
+        .feature-icon.not-included.highlighted { background: #374151; }
+
+        .feature-icon svg { width: 0.85rem; height: 0.85rem; stroke-width: 3; }
+        .feature-icon.included svg { stroke: #FFF; }
+        .feature-icon.not-included.standard svg { stroke: #9CA3AF; }
+        .feature-icon.not-included.highlighted svg { stroke: #6B7280; }
+
+        .feature-text.included.standard { color: var(--text-main); font-weight: 500; }
+        .feature-text.included.highlighted { color: #FFF; font-weight: 500; }
+        .feature-text.not-included.standard { color: #9CA3AF; text-decoration: line-through; }
+        .feature-text.not-included.highlighted { color: #6B7280; text-decoration: line-through; }
+
+        /* ===========================
+           CONTACTO
+        =========================== */
+        .contact-area { background-color: var(--bg-body); }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .contact-left {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-left img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-info-blocks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .info-block { padding: 10px 0; }
+
+        .info-block i {
+            color: var(--primary-dark);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .info-block h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+
+        .info-block p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.4; }
+
+        .info-block a {
+            color: var(--text-main);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.88rem;
+        }
+
+        .form-card {
+            background: #FFFFFF;
+            padding: 44px 38px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .form-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+
+        .form-card > p { color: var(--text-muted); margin-bottom: 28px; font-size: 0.92rem; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 7px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-group label { font-size: 0.82rem; font-weight: 500; color: var(--text-main); }
+
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+
+        .input-wrapper i { position: absolute; left: 14px; color: var(--text-muted); font-size: 17px; }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 13px 13px 42px;
+            background: #F9FAFB;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.93rem;
+            transition: var(--transition-smooth);
+            outline: none;
+            color: var(--text-main);
+        }
+
+        .form-group textarea { padding-left: 14px; resize: vertical; height: 110px; }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background: #FFF;
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 0 4px rgba(253,253,5,0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--text-main);
+            color: #FFF;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.98rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 36px 0;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* ===========================
+           TABLET – 768px a 1024px
+        =========================== */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .slider-container { height: 52vh; }
+
+            .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-left img { height: 260px; }
+
+            .section-title { font-size: 2.3rem; }
+
+            .services-icons-row { gap: 36px; }
+
+            .service-item-img { width: 110px; }
+            .service-item-img i { font-size: 50px; }
+
+            .banner-clases-img {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 28px;
+            }
+
+            .banner-clases-divider { display: none; }
+            .banner-clases-left { flex-direction: column; }
+        }
+
+        /* ===========================
+           MÓVIL – hasta 768px
+        =========================== */
+        @media (max-width: 768px) {
+            /* Secciones */
+            .section-padding { padding: 64px 0; }
+
+            /* Navbar */
+            .nav-links { display: none; }
+            .nav-btn-desktop { display: none; }
+            .hamburger { display: flex; }
+
+            .main-logo { height: 38px; }
+
+            /* Slider: más pequeño en móvil */
+            .slider-container {
+                height: 38vh;
+                min-height: 200px;
+                margin-top: 66px;
+            }
+
+            .slider-btn { width: 36px; height: 36px; font-size: 16px; }
+            .prev-btn { left: 10px; }
+            .next-btn { right: 10px; }
+            .slider-dots { bottom: 12px; }
+            .dot { width: 8px; height: 8px; }
+
+            /* Servicios */
+            .services-header-img h2 { font-size: 1.7rem; }
+            .services-header-img { margin-bottom: 30px; }
+
+            .services-icons-row {
+                gap: 24px 20px;
+                margin-bottom: 36px;
+                justify-content: space-around;
+            }
+
+            .service-item-img { width: calc(33.33% - 16px); min-width: 80px; }
+            .service-item-img i { font-size: 44px; }
+            .service-item-img p { font-size: 0.72rem; }
+
+            .banner-clases-img {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 22px;
+                padding: 20px 20px;
+                gap: 14px;
+            }
+
+            .banner-clases-left { flex-direction: column; gap: 8px; }
+            .banner-clases-left i { font-size: 34px; }
+            .banner-clases-left h3 { font-size: 1.05rem; }
+            .banner-clases-divider { display: none; }
+            .banner-clases-center { font-size: 0.85rem; }
+
+            /* Planes */
+            .plans-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .section-title { font-size: 1.9rem; }
+            .section-subtitle { font-size: 0.95rem; margin-bottom: 40px; }
+
+            .plan-card { padding: 1.6rem; }
+            .price-amount { font-size: 1.9rem; }
+            .cta-button { font-size: 0.95rem; }
+
+            /* Contacto */
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .contact-left img { height: 220px; }
+
+            .contact-info-blocks { grid-template-columns: 1fr; gap: 14px; }
+
+            .form-card { padding: 28px 22px; }
+            .form-card h3 { font-size: 1.5rem; }
+
+            .form-grid { grid-template-columns: 1fr; gap: 14px; }
+            .form-group.full { grid-column: 1; }
+
+            /* Título de sección contacto */
+            .contact-left h2.section-title { font-size: 2rem; }
+        }
+
+        /* ===========================
+           MÓVIL PEQUEÑO – hasta 420px
+        =========================== */
+        @media (max-width: 420px) {
+            .container { padding: 0 16px; }
+
+            .slider-container { height: 34vh; min-height: 180px; }
+
+            .section-title { font-size: 1.65rem; }
+
+            .service-item-img { width: calc(50% - 12px); }
+            .service-item-img i { font-size: 40px; }
+
+            .price-amount { font-size: 1.7rem; }
+
+            .btn { padding: 12px 20px; font-size: 0.9rem; }
+
+            .form-card { padding: 22px 16px; }
+
+            .form-card h3 { font-size: 1.35rem; }
+
+            footer { padding: 28px 0; }
+        }
+    </style>
+</head>
+
+<body data-aos-easing="ease-out-cubic" data-aos-duration="800" data-aos-delay="0">
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#">
+                    <img src="https://r2-test.numart.com.co/APEX%20FITNESS%20LOGO.png" alt="Logo APEX" class="main-logo">
+                </a>
+
+                <div class="nav-links">
+                    <a href="#servicios">Servicios</a>
+                    <a href="#planes">Planes</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+
+                <div class="nav-btn-desktop">
+                    <a href="#contacto" class="btn">Empezar Ahora</a>
+                </div>
+
+                <!-- Botón hamburger solo en móvil -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menú móvil desplegable -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+        <a href="#planes" onclick="closeMobileMenu()">Planes</a>
+        <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+        <a href="#contacto" onclick="closeMobileMenu()" style="background: var(--primary); color:#000; font-weight:700;">Empezar Ahora →</a>
+    </div>
+
+    <!-- SLIDER HERO -->
+    <section class="slider-container" id="inicio">
+        <div class="slide active">
+            <img src="https://r2-test.numart.com.co/Copy%20of%20Copy%20of%20Untitled%20Design.jpg" alt="Anuncio Gym 1">
+        </div>
+        <div class="slide">
+            <img src="https://r2-test.numart.com.co/Copy%20of%20Untitled%20Design.png" alt="Anuncio Gym 2">
+        </div>
+        <div class="slide">
+            <img src="https://r2-test.numart.com.co/Untitled%20design.jpg" alt="Anuncio Gym 3">
+        </div>
+
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
+
+        <div class="slider-dots">
+            <div class="dot active" onclick="currentSlide(0)"></div>
+            <div class="dot" onclick="currentSlide(1)"></div>
+            <div class="dot" onclick="currentSlide(2)"></div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="services-image-layout section-padding">
+        <div class="container">
+            <div class="services-header-img aos-init aos-animate" data-aos="fade-up">
+                <h4>Tu bienestar, nuestra prioridad</h4>
+                <h2>Nuestros Servicios</h2>
+            </div>
+
+            <div class="services-icons-row aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item-img">
+                    <i class="ph-fill ph-barbell"></i>
+                    <p>Entrenamiento<br>personalizado</p>
+                </div>
+                <div class="service-item-img">
+                    <i class="ph-fill ph-bowl-food"></i>
+                    <p>Nutrición<br>inteligente</p>
+                </div>
+                <div class="service-item-img">
+                    <i class="ph-fill ph-person-arms-spread"></i>
+                    <p>Bienestar<br>INTEGRAL</p>
+                </div>
+                <div class="service-item-img">
+                    <i class="ph-fill ph-flower-lotus"></i>
+                    <p>APEX<br>SPA</p>
+                </div>
+                <div class="service-item-img">
+                    <i class="ph-fill ph-person-simple-run"></i>
+                    <p>Seguimiento<br>digital</p>
+                </div>
+            </div>
+
+            <div class="banner-clases-img aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+                <div class="banner-clases-left">
+                    <i class="ph-fill ph-calendar-check"></i>
+                    <h3>Clases grupales INCLUIDAS</h3>
+                </div>
+                <div class="banner-clases-divider"></div>
+                <div class="banner-clases-center">
+                    Spinning, funcional, HIIT, zumba, yoga y más.<br>
+                    Variedad para que nunca te aburras.
+                </div>
+                <div class="banner-clases-right">
+                    <a href="#contacto" class="btn-dark">VER HORARIOS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" class="plans-area section-padding">
+        <div class="container">
+            <div class="text-center aos-init aos-animate" data-aos="fade-up">
+                <h2 class="section-title">Elige tu plan y <span style="color: var(--primary-dark); font-weight: 800;">empieza hoy</span></h2>
+                <p class="section-subtitle">El nivel de acceso perfecto para tus objetivos fitness.</p>
+            </div>
+
+            <div class="plans-grid">
+
+                <!-- Plan Basic -->
+                <div class="plan-card standard aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="badge standard">El más accesible</div>
+                    <div class="plan-header">
+                        <h3 style="font-size: 1.75rem; font-weight: bold; margin-bottom: 0.75rem;">Plan Basic</h3>
+                    </div>
+                    <div class="pricing-section">
+                        <div class="pricing-label">Desde</div>
+                        <div class="original-price">$ 59.900</div>
+                        <div class="current-price">
+                            <span class="price-amount">$ 14.975</span>
+                            <span class="discount-badge">75% OFF*</span>
+                        </div>
+                        <div class="price-details">mensual por 2 meses, después $ 59.900/mes</div>
+                        <div class="commitment">12 meses de fidelidad*</div>
+                    </div>
+                    <button class="cta-button standard">Elegir Basic</button>
+                    <div class="divider"></div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">Zona Pesas &amp; Cardio</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">Vestidores y Duchas</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">App rutinas básicas</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon not-included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+                            <p class="feature-text not-included standard">Clases Grupales</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon not-included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+                            <p class="feature-text not-included standard">Acceso APEX SPA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan Premium (destacado) -->
+                <div class="plan-card highlighted aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                    <div class="badge highlighted">El más ventajoso</div>
+                    <div class="plan-header">
+                        <h3 class="text-primary" style="font-size: 1.75rem; font-weight: bold; margin-bottom: 0.75rem;">Plan Premium</h3>
+                    </div>
+                    <div class="pricing-section">
+                        <div class="pricing-label">DESDE</div>
+                        <div class="original-price">$ 119.900</div>
+                        <div class="current-price">
+                            <span class="price-amount text-primary">$ 29.750</span>
+                            <span class="discount-badge highlighted">75% OFF*</span>
+                        </div>
+                        <div class="price-details">mensual por 2 meses, después $ 119.900/mes</div>
+                    </div>
+                    <button class="cta-button highlighted">¡Comprar Premium!</button>
+                    <div class="divider"></div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">Zona Pesas &amp; Cardio Premium</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">Clases Grupales Incluidas</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">App Seguimiento Avanzada</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">Nutrición Inteligente</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">Acceso APEX SPA TOTAL</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included highlighted"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included highlighted">Rutina Personalizada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plan Fitness -->
+                <div class="plan-card standard aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                    <div class="badge standard">El más popular</div>
+                    <div class="plan-header">
+                        <h3 style="font-size: 1.75rem; font-weight: bold; margin-bottom: 0.75rem;">Plan Fitness</h3>
+                    </div>
+                    <div class="pricing-section">
+                        <div class="pricing-label">Desde</div>
+                        <div class="original-price">$ 79.900</div>
+                        <div class="current-price">
+                            <span class="price-amount">$ 19.975</span>
+                            <span class="discount-badge">75% OFF*</span>
+                        </div>
+                        <div class="price-details">mensual por 2 meses, después $ 79.900/mes</div>
+                        <div class="commitment">12 meses de fidelidad*</div>
+                    </div>
+                    <button class="cta-button standard">Elegir Fitness</button>
+                    <div class="divider"></div>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">Zona Pesas &amp; Cardio</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">Clases Grupales Incluidas</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></div>
+                            <p class="feature-text included standard">App Seguimiento Avanzada</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon not-included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+                            <p class="feature-text not-included standard">Nutrición Asesoría</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon not-included standard"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></div>
+                            <p class="feature-text not-included standard">Acceso APEX SPA</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center" style="margin-top: 2.5rem; color: var(--text-muted); font-size: 0.875rem;">
+                <p>*Oferta válida para nuevos miembros. <u><a href="#contacto">Aplican términos y condiciones.</a></u></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact-area section-padding">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-left aos-init aos-animate" data-aos="fade-right">
+                    <h2 class="section-title" style="font-size: 2.3rem; margin-bottom: 0;">Nos encantaría escucharte.</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">Visítanos, llámanos o escríbenos. Nuestro equipo está listo para ayudarte en tu camino fitness.</p>
+
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Instalaciones del Gym">
+
+                    <div class="contact-info-blocks">
+                        <div class="info-block">
+                            <i class="ph-fill ph-envelope-simple"></i>
+                            <h4>Soporte Email</h4>
+                            <p>Te respondemos en breve.</p>
+                            <a href="mailto:hola@apexfit.com">hola@apexfit.com</a>
+                        </div>
+                        <div class="info-block">
+                            <i class="ph-fill ph-map-pin"></i>
+                            <h4>Nuestra Sede</h4>
+                            <p>Ven a entrenar.</p>
+                            <a href="#">Cra 51B, Barranquilla</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-right aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+                    <div class="form-card">
+                        <h3>Ponte en contacto</h3>
+                        <p>O si prefieres, déjanos tus datos y nosotros te contactamos rápidamente.</p>
+
+                        <form onsubmit="event.preventDefault(); alert('¡Gracias por escribirnos!'); location.reload()">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-user"></i>
+                                        <input id="nombreinput" type="text" placeholder="Ej. Carlos" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-user"></i>
+                                        <input id="apellidoinput" type="text" placeholder="Tu apellido">
+                                    </div>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Email</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-envelope"></i>
+                                        <input id="email" type="email" placeholder="correo@ejemplo.com" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Asunto</label>
+                                    <div class="input-wrapper">
+                                        <i class="ph ph-info"></i>
+                                        <input id="asunto" type="text" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Mensaje</label>
+                                    <textarea id="mensaje" required=""></textarea>
+                                </div>
+                            </div>
+                            <button onclick="enviarCorreo()" type="submit" class="btn-submit">Enviar Mensaje →</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <img src="https://r2-test.numart.com.co/APEX%20FITNESS%20LOGO.png" alt="Logo Footer" style="height: 44px; margin-bottom: 16px; opacity: 0.8; filter: grayscale(1);">
+            <p>© 2026 Smartly City. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
+        });
+
+        // ── SLIDER ──────────────────────────────────────────
+        let slideIndex = 0;
+        let slideInterval;
+        const slides = document.querySelectorAll(".slide");
+        const dots   = document.querySelectorAll(".dot");
+
+        function showSlides(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            slides.forEach(s => s.classList.remove("active"));
+            dots.forEach(d => d.classList.remove("active"));
+            slides[slideIndex].classList.add("active");
+            dots[slideIndex].classList.add("active");
+        }
+
+        function moveSlide(n) {
+            clearInterval(slideInterval);
+            slideIndex += n;
+            showSlides(slideIndex);
+            startAutoSlide();
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            slideIndex = n;
+            showSlides(slideIndex);
+            startAutoSlide();
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(function () {
+                slideIndex++;
+                showSlides(slideIndex);
+            }, 5000);
+        }
+
+        showSlides(slideIndex);
+        startAutoSlide();
+
+        // ── HAMBURGER MENU ───────────────────────────────────
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu   = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', function () {
+            this.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+
+        function closeMobileMenu() {
+            hamburgerBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        }
+
+        // Cerrar si se toca fuera del menú
+        document.addEventListener('click', function(e) {
+            if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // ── ENVIAR CORREO ────────────────────────────────────
+        async function enviarCorreo() {
+            try {
+                const WORKER_URL = "https://enviar-correo-cuc.mrluki4656.workers.dev/";
+                const response = await fetch(WORKER_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email:      document.getElementById("email").value,
+                        nombre:     document.getElementById("nombreinput").value,
+                        apellido:   document.getElementById("apellidoinput").value,
+                        asuntotext: document.getElementById("asunto").value,
+                        mensaje:    document.getElementById("mensaje").value
+                    })
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+
+
+</body></html>
